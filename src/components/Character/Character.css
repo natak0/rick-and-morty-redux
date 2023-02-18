@@ -1,0 +1,24 @@
+.item-detail {
+  display: flex;
+  flex-direction: column;
+}
+.item-detail img {
+  object-fit: scale-down;
+  width: 100%;
+}
+.item-detail--single {
+  flex-direction: row;
+  gap: 1em;
+}
+.item-detail__text-container {
+  display: flex;
+  flex-direction: column;
+}
+.item-detail--single .item-detail__text-container :last-child {
+  padding-top: 1em;
+}
+@media (width <= 30em) {
+  .item-detail--single {
+    flex-direction: column;
+  }
+}

@@ -3,14 +3,22 @@ import { Link } from "react-router-dom";
 import "./Character.css";
 
 export const Character = ({ item, excerpt }) => {
+  console.log("character", item);
   const character = (
     <article className={`item-detail${!excerpt ? ` item-detail--single` : ""}`}>
       <img src={item.image} alt={`${item.name}`} />
       <div className="item-detail__text-container">
-        <h3>{`${item.name}`}</h3>
-        <span>{item.gender}</span>
-        <span>{item.species}</span>
-        {!excerpt && <span>{item.origin.name}</span>}
+        <h3>{item.name}</h3>
+        <span>{`Gender: ${item.gender}`}</span>
+        <span>{`Species: ${item.species}`}</span>
+        {!excerpt && (
+          <>
+            <span>{`Origin: ${item.origin.name}`}</span>
+            <span>{`Location: ${item.location.name}`}</span>
+            <span>{`Status: ${item.status}`}</span>
+            <span>{`Type: ${item.type}`}</span>
+          </>
+        )}
       </div>
     </article>
   );
@@ -19,6 +27,6 @@ export const Character = ({ item, excerpt }) => {
       {character}
     </Link>
   ) : (
-    character
+    item && character
   );
 };

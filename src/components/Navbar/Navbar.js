@@ -6,8 +6,12 @@ const Navbar = () => (
   <nav className="navbar">
     <section>
       <Link to="/">
+        <img
+          src="https://rickandmortyapi.com/api/character/avatar/19.jpeg"
+          alt="rick and morty avatar"
+        />
       </Link>
-      <h1>All Rick and Morty characters</h1>
+      <h1>Rick and Morty characters</h1>
     </section>
   </nav>
 );

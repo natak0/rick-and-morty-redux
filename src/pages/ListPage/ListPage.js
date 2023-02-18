@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, Suspense } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { Character } from "../../components/Character/Character";
 import { useGetCharactersByPageQuery } from "../../slices/rickMortyConnect";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -21,10 +21,6 @@ const ListPage = () => {
       <Character key={`${item.name}-${item.id}`} item={item} excerpt />
     ));
   };
-
-  function Loading() {
-    return <h2>Loading...</h2>;
-  }
 
   useEffect(() => {
     if (data && data.characters.results && data.characters.results.length > 0) {
@@ -49,7 +45,9 @@ const ListPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
-  return (
+  return isLoading ? (
+    <h2>Loading...</h2>
+  ) : (
     <section>
       <Search
         placeholder="Search"
@@ -57,29 +55,19 @@ const ListPage = () => {
         setSearchValue={setSearchValue}
       />
       <h2 style={{ textAlign: "center" }}>Find Your Character</h2>
-
-      <Suspense fallback={<Loading />}>
-        {data &&
-          data.characters.results &&
-          data.characters.results !== undefined &&
-          data.characters.info !== undefined && (
-            <>
-              <p style={{ textAlign: "center" }}>{`Total: ${
-                data.characters.info.count
-              }, Page: ${data.characters.info.next - 1}`}</p>
-              <InfiniteScroll
-                dataLength={data.characters.info.count}
-                next={() => setPage(page + 1)}
-                hasMore={data.characters.info.next !== undefined}
-                loader={<p>Loading...</p>}
-                className="list-wrapper"
-                endMessage={<p>No more results</p>}
-              >
-                {renderList()}
-              </InfiniteScroll>
-            </>
-          )}
-      </Suspense>
+      <p style={{ textAlign: "center" }}>{`Total: ${
+        data.characters.info.count
+      }, Page: ${data.characters.info.next - 1}`}</p>
+      <InfiniteScroll
+        dataLength={data.characters.info.count}
+        next={() => setPage(page + 1)}
+        hasMore={data.characters.info.next !== undefined}
+        loader={<p>Loading...</p>}
+        className="list-wrapper"
+        endMessage={<p>No more results</p>}
+      >
+        {renderList()}
+      </InfiniteScroll>
     </section>
   );
 };
