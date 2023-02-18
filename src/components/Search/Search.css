@@ -1,0 +1,19 @@
+.search {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  margin: 10px 0;
+}
+.search input {
+  width: 207px;
+  height: 32px;
+  border-radius: 5px;
+  position: relative;
+}
+.search__icon {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  right: 10px;
+  top: 12px;
+}

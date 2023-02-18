@@ -1,0 +1,16 @@
+.navbar {
+    width: 100%;
+  }
+  .navbar img {
+    width: 40px;
+  }
+  .navbar h1 {
+    font-size: bold;
+    color: #000;
+  }
+  .navbar section {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
