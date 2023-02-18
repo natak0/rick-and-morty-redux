@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Character.css";
 
 export const Character = ({ item, excerpt }) => {
-  console.log("character", item);
   const character = (
     <article className={`item-detail${!excerpt ? ` item-detail--single` : ""}`}>
       <img src={item.image} alt={`${item.name}`} />

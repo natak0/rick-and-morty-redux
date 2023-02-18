@@ -8,10 +8,22 @@ import "./ListPage.css";
 
 const ListPage = () => {
   const [page, setPage] = useState(1);
-  const { data, error, isLoading } = useGetCharactersByPageQuery(page);
-  const [scrolledData, setScrolledData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  console.log(data, page, "page");
+  const { data, error, isLoading } = useGetCharactersByPageQuery({
+    page,
+    name: searchValue,
+  });
+  const [scrolledData, setScrolledData] = useState([]);
+
+  console.log(
+    data,
+    error,
+    isLoading,
+    searchValue,
+    page,
+    "page",
+    scrolledData.length
+  );
   const renderList = () => {
     if (isLoading) return <p>Loading list...</p>;
     if (error) return <p>Unable to display list.</p>;
@@ -60,7 +72,13 @@ const ListPage = () => {
       }, Page: ${data.characters.info.next - 1}`}</p>
       <InfiniteScroll
         dataLength={data.characters.info.count}
-        next={() => setPage(page + 1)}
+        next={() =>
+          setPage(
+            data.characters.info.next !== undefined
+              ? data.characters.info.next
+              : page
+          )
+        }
         hasMore={data.characters.info.next !== undefined}
         loader={<p>Loading...</p>}
         className="list-wrapper"

@@ -1,7 +1,8 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { gql, request, ClientError } from "graphql-request";
+import { graphqlRequestBaseQuery } from "@rtk-query/graphql-request-base-query";
 
-const graphqlBaseQuery =
+/*const graphqlBaseQuery =
   ({ baseUrl }) =>
   async ({ body }) => {
     try {
@@ -13,20 +14,20 @@ const graphqlBaseQuery =
       }
       return { error: { status: 500, data: error } };
     }
-  };
+  };*/
 
 export const rickMortyApi = createApi({
   reducerPath: "rickMortyApi",
-  baseQuery: graphqlBaseQuery({
-    baseUrl: "https://rickandmortyapi.com/graphql",
+  baseQuery: graphqlRequestBaseQuery({
+    url: "https://rickandmortyapi.com/graphql",
   }),
   tagTypes: ["List", "Character"],
   endpoints: (builder) => ({
     getCharactersByPage: builder.query({
-      query: (page) => ({
-        body: gql`
-          query {
-            characters(page: ${page}) {
+      query: ({ page, name }) => ({
+        document: gql`
+          query ($page: Int = 1, $name: String) {
+            characters(page: $page, filter: { name: $name }) {
               info {
                 count
                 pages
@@ -43,6 +44,7 @@ export const rickMortyApi = createApi({
             }
           }
         `,
+        variables: { page, name },
       }),
       refetchOnMountOrArgChange: 86400, // refetch if 24 hours have passed
       providesTags: (result, error, arg) =>
