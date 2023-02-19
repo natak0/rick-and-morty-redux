@@ -24,10 +24,13 @@ export const rickMortyApi = createApi({
   tagTypes: ["List", "Character"],
   endpoints: (builder) => ({
     getCharactersByPage: builder.query({
-      query: ({ page, name }) => ({
+      query: ({ page, name, species }) => ({
         document: gql`
-          query ($page: Int = 1, $name: String) {
-            characters(page: $page, filter: { name: $name }) {
+          query ($page: Int = 1, $name: String, $species: String) {
+            characters(
+              page: $page
+              filter: { name: $name, species: $species }
+            ) {
               info {
                 count
                 pages
@@ -44,7 +47,7 @@ export const rickMortyApi = createApi({
             }
           }
         `,
-        variables: { page, name },
+        variables: { page, name, species },
       }),
       refetchOnMountOrArgChange: 86400, // refetch if 24 hours have passed
       providesTags: (result, error, arg) =>

@@ -1,12 +1,11 @@
 body {
-    background-color: white;
-    font-family: "Open sans", sans-serif;
-  }
-  #root {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    width: 80%;
-  }
-  
+  background-color: #fff;
+  font-family: "Inter", sans-serif;
+  color: #212121;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
