@@ -7,12 +7,7 @@
 }
 .list-wrapper a {
   text-decoration: none;
-  color: black;
-}
-@media (width <= 30em) {
-  .list-wrapper {
-    grid-template-columns: 1fr;
-  }
+  color: #fff;
 }
 
 .panel {
@@ -22,19 +17,31 @@
   width: 100%;
   gap: 32px;
   justify-content: center;
+  width: 80%;
 }
-
 .panel--left {
   display: flex;
   flex-direction: column;
-  width: 65%;
+  width: 80%;
+}
+.panel__row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
 }
 
-@media (width <= 30em) {
+@media (width <= 60em) {
   .panel {
     flex-direction: column;
   }
   .panel--left {
     width: 100%;
+  }
+}
+@media (width <= 30em) {
+  .list-wrapper {
+    grid-template-columns: 1fr;
   }
 }

@@ -7,7 +7,7 @@ export const Character = ({ item, excerpt }) => {
     <article className={`item-detail${!excerpt ? ` item-detail--single` : ""}`}>
       <img src={item.image} alt={`${item.name}`} />
       <div className="item-detail__text-container">
-        <h3>{item.name}</h3>
+        <h2>{item.name}</h2>
         <span>{`Gender: ${item.gender}`}</span>
         <span>{`Species: ${item.species}`}</span>
         {!excerpt && (
@@ -15,7 +15,7 @@ export const Character = ({ item, excerpt }) => {
             <span>{`Origin: ${item.origin.name}`}</span>
             <span>{`Location: ${item.location.name}`}</span>
             <span>{`Status: ${item.status}`}</span>
-            <span>{`Type: ${item.type}`}</span>
+            {item.type && <span>{`Type: ${item.type}`}</span>}
           </>
         )}
       </div>

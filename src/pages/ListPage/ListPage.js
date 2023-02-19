@@ -1,13 +1,11 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState } from "react";
 import { Character } from "../../components/Character/Character";
 import { useGetCharactersByPageQuery } from "../../services/rickMortyConnect";
-import Search from "../../components/Search/Search";
 import Pagination from "../../components/Pagination/Pagination";
 import ChartWrapper from "../../components/charts/ChartWrapper/ChartWrapper";
 import DonutChart from "../../components/charts/Donut/Donut";
+import { useSelector } from "react-redux";
 import "./ListPage.css";
-import { useSelector, useDispatch } from "react-redux";
-import { search } from "../../slices/search";
 
 const ListPage = () => {
   const searchValue = useSelector((state) => state.search.query);
@@ -24,32 +22,34 @@ const ListPage = () => {
     ));
   };
 
-  useLayoutEffect(() => {
-    if (searchValue.length > 0) setPage(1);
-  }, [searchValue]);
-
   return isLoading ? (
     <h2>Loading list...</h2>
   ) : (
     <main className="panel">
       <section className="panel--left">
-        <Pagination
-          pageInfo={data.characters.info}
-          page={page}
-          setPage={setPage}
-        />
-        <p style={{ textAlign: "center" }}>
-          {`Total: ${data.characters.info.count}`}
-        </p>
+        <div className="panel__row">
+          {data.characters.info.count !== null && (
+            <p style={{ textAlign: "center" }}>
+              {`Total: ${data.characters.info.count}`}
+            </p>
+          )}
+          <Pagination
+            pageInfo={data.characters.info}
+            page={page}
+            setPage={setPage}
+          />
+        </div>
         <div className="list-wrapper"> {renderList()}</div>
       </section>
-      <section className="panel--right">
-        <ChartWrapper>
-          <div className="chart-container__item">
-            <DonutChart data={data.characters.results} />
-          </div>
-        </ChartWrapper>
-      </section>
+      {data.characters.info.count !== null && (
+        <section className="panel--right">
+          <ChartWrapper>
+            <div className="chart-container__item">
+              <DonutChart data={data.characters.results} />
+            </div>
+          </ChartWrapper>
+        </section>
+      )}
     </main>
   );
 };

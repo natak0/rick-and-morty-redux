@@ -18,7 +18,7 @@ const Pagination = ({ pageInfo, page, setPage }) => {
   ) : (
     <div className="pagination">
       <button disabled={!pageInfo.prev} onClick={() => setPreviousPage()}>
-        prev
+        previous
       </button>
       <span className="pagination__current-page">{`${page}/${pageInfo.pages}`}</span>
       <button disabled={!pageInfo.next} onClick={() => setNextPage()}>

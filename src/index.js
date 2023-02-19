@@ -17,7 +17,6 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(rickMortyApi.middleware),
 });
-console.log("Initial state: ", store.getState().rickMortyApi);
 setupListeners(store.dispatch);
 
 const container = document.getElementById("root");

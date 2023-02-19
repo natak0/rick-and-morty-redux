@@ -4,16 +4,21 @@ import Search from "../Search/Search";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const random = Math.floor(Math.random() * 826);
   return (
     <nav className="navbar">
       <section>
         <Link to="/">
           <img
-            src="https://rickandmortyapi.com/api/character/avatar/19.jpeg"
+            src={`https://rickandmortyapi.com/api/character/avatar/${
+              random === 0 ? 1 : random
+            }.jpeg`}
             alt="rick and morty avatar"
           />
         </Link>
-        <h1>Rick and Morty characters</h1>
+        <Link to="/">
+          <h1>Rick and Morty Characters</h1>
+        </Link>
         <Search placeholder="Search" />
       </section>
     </nav>

@@ -2,6 +2,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { gql } from "graphql-request";
 import { graphqlRequestBaseQuery } from "@rtk-query/graphql-request-base-query";
 
+// Create endpoints to retrieve the data
 export const rickMortyApi = createApi({
   reducerPath: "rickMortyApi",
   baseQuery: graphqlRequestBaseQuery({

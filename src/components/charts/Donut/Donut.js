@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
 const DonutChart = (appdata) => {
-  const genders = ["Female", "Male", "Genderless", "unknown"];
+  const genders = ["Female", "Male", "Genderless", "unknown"]; // graphql api spec for gender
   const wrapper = useRef(null);
 
   const width = 400;
@@ -20,7 +20,7 @@ const DonutChart = (appdata) => {
       count > 0 &&
         totalPerGender.push({
           name: gender,
-          value: appdata.data.filter((d) => d.gender === gender).length,
+          value: count,
         });
     });
 
@@ -64,12 +64,18 @@ const DonutChart = (appdata) => {
       .attr("dy", "0.35em")
       .style("text-anchor", "middle")
       .attr("fill", "white")
-      .attr("fontSize", "20");
+      .attr("fontSize", "12");
   }, [wrapper, appdata.data]);
 
   return (
     <div ref={wrapper}>
-      <h2>Gender sagregation</h2>
+      <h3
+        style={{
+          textAlign: "center",
+        }}
+      >
+        Genders per page view
+      </h3>
     </div>
   );
 };

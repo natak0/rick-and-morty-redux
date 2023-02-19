@@ -1,16 +1,25 @@
 .navbar {
-    width: 100%;
-  }
-  .navbar img {
-    width: 40px;
-  }
-  .navbar h1 {
-    font-size: bold;
-    color: #000;
-  }
-  .navbar section {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-  }
-  
+  width: 100%;
+  border-bottom: 2px solid darkgray;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar img {
+  width: 40px;
+  margin-left: 0;
+  margin-right: auto;
+}
+.navbar h1 {
+  font-size: bold;
+}
+.navbar section {
+  display: inline-flex;
+  align-items: center;
+  width: 80%;
+  gap: 16px;
+}
+.navbar .search {
+  margin-left: auto;
+  margin-right: 0;
+}

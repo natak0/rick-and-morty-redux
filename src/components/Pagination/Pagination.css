@@ -7,6 +7,10 @@
   border: none;
   padding: 0;
   font: inherit;
+  color: #fff;
+}
+.pagination button:disabled {
+  color: darkgrey;
 }
 .pagination button:not(:disabled):hover {
   color: #007bff;

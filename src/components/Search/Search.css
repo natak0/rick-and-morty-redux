@@ -5,10 +5,11 @@
   margin: 10px 0;
 }
 .search input {
-  width: 207px;
+  width: auto;
   height: 32px;
   border-radius: 5px;
   position: relative;
+  padding-left: 16px;
 }
 .search__icon {
   position: absolute;
