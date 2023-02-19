@@ -1,9 +1,11 @@
 import React, { useState, useLayoutEffect } from "react";
 import { Character } from "../../components/Character/Character";
-import { useGetCharactersByPageQuery } from "../../slices/rickMortyConnect";
+import { useGetCharactersByPageQuery } from "../../services/rickMortyConnect";
 import Search from "../../components/Search/Search";
-import "./ListPage.css";
 import Pagination from "../../components/Pagination/Pagination";
+import ChartWrapper from "../../components/charts/ChartWrapper/ChartWrapper";
+import DonutChart from "../../components/charts/Donut/Donut";
+import "./ListPage.css";
 
 const ListPage = () => {
   const [page, setPage] = useState(1);
@@ -42,6 +44,11 @@ const ListPage = () => {
         {`Total: ${data.characters.info.count}`}
       </p>
       <div className="list-wrapper"> {renderList()}</div>
+      <ChartWrapper>
+        <div className="chart-container__item">
+          <DonutChart data={data.characters.results} />
+        </div>
+      </ChartWrapper>
     </section>
   );
 };
