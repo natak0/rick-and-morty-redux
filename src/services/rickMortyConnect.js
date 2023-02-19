@@ -39,7 +39,7 @@ export const rickMortyApi = createApi({
     getCharacterById: builder.query({
       query: ({ characterId }) => ({
         document: gql`
-          query ($characterId = 1) {
+          query ($characterId: ID! = 1) {
             character(id: $characterId) {
               id
               name

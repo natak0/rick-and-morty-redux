@@ -6,7 +6,7 @@ import { useGetCharacterByIdQuery } from "../../services/rickMortyConnect";
 const ListItem = ({ match }) => {
   const { id } = useParams();
 
-  const { data, error, isLoading } = useGetCharacterByIdQuery({});
+  const { data, error, isLoading } = useGetCharacterByIdQuery({characterId:id});
   console.log(id, data);
 
   const renderItem = () => {

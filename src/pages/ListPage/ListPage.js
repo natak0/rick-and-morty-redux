@@ -6,10 +6,12 @@ import Pagination from "../../components/Pagination/Pagination";
 import ChartWrapper from "../../components/charts/ChartWrapper/ChartWrapper";
 import DonutChart from "../../components/charts/Donut/Donut";
 import "./ListPage.css";
+import { useSelector, useDispatch } from "react-redux";
+import { search } from "../../slices/search";
 
 const ListPage = () => {
+  const searchValue = useSelector((state) => state.search.query);
   const [page, setPage] = useState(1);
-  const [searchValue, setSearchValue] = useState("");
   const { data, error, isLoading } = useGetCharactersByPageQuery({
     page,
     name: searchValue,
@@ -31,11 +33,6 @@ const ListPage = () => {
   ) : (
     <main className="panel">
       <section className="panel--left">
-        <Search
-          placeholder="Search"
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
         <Pagination
           pageInfo={data.characters.info}
           page={page}
