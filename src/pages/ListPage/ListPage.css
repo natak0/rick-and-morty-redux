@@ -14,3 +14,27 @@
     grid-template-columns: 1fr;
   }
 }
+
+.panel {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  width: 100%;
+  gap: 32px;
+  justify-content: center;
+}
+
+.panel--left {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+
+@media (width <= 30em) {
+  .panel {
+    flex-direction: column;
+  }
+  .panel--left {
+    width: 100%;
+  }
+}

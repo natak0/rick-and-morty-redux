@@ -29,27 +29,31 @@ const ListPage = () => {
   return isLoading ? (
     <h2>Loading list...</h2>
   ) : (
-    <section>
-      <Search
-        placeholder="Search"
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-      <Pagination
-        pageInfo={data.characters.info}
-        page={page}
-        setPage={setPage}
-      />
-      <p style={{ textAlign: "center" }}>
-        {`Total: ${data.characters.info.count}`}
-      </p>
-      <div className="list-wrapper"> {renderList()}</div>
-      <ChartWrapper>
-        <div className="chart-container__item">
-          <DonutChart data={data.characters.results} />
-        </div>
-      </ChartWrapper>
-    </section>
+    <main className="panel">
+      <section className="panel--left">
+        <Search
+          placeholder="Search"
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+        <Pagination
+          pageInfo={data.characters.info}
+          page={page}
+          setPage={setPage}
+        />
+        <p style={{ textAlign: "center" }}>
+          {`Total: ${data.characters.info.count}`}
+        </p>
+        <div className="list-wrapper"> {renderList()}</div>
+      </section>
+      <section className="panel--right">
+        <ChartWrapper>
+          <div className="chart-container__item">
+            <DonutChart data={data.characters.results} />
+          </div>
+        </ChartWrapper>
+      </section>
+    </main>
   );
 };
 
