@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Rick and Morty Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application to render a list of characters from the [Rick and Morty API](https://rickandmortyapi.com/documentation/).
 
-## Available Scripts
+The application consists of 2 views. A list of characters and a detailed page for the selected character.
 
-In the project directory, you can run:
+The list of characters has pagination and a search input to search characters by name. It also has a simple donut chart for genders made with D3.js. I used a donut chart because I think this type of chart is perfect to represent limited amount of categories (maximum 4 for this dataset). The chart renders the data for the current page only. It updates every time the page is changed or the data is filtered by name.
 
-### `npm start`
+The search input is placed in the navigation bar and it uses redux ('search slice') to update the list view page.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The endpoints are defined with the _createApi_ method (from Redux Toolkit Query) to query the API.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The responses from the API are cached for 24 hours using RTK query.
 
-### `npm test`
+The character view displays the character's image, name, and other details.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tools and environment
 
-### `npm run build`
+The project was created in CRA using plain JavaScript and CSS. I in Visual Studio Code.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A Prettier plugin for VScode was used to format the code.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Run the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run the project in the development mode, run [`npm install`] and then [`npm start`] in the terminal within the project folder.
 
-### `npm run eject`
+To build the app for production to the `build` folder, run [`npm run build`]
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Styling
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I used CSS to style the page. For the naming, I follow _BEM_ (Blocks, Elements and Modifiers) methodology. I also added the styles for mobile view. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+I also use _rem_ units for fonts and media queries to improve the accessibility.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Testing
 
-## Learn More
+- Cross-browser testing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Tested in the latest Chrome and Firefox browsers and for the responsive view.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Unit testing
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Unfortunately I did not have enough time to implement tests, but I think adding them would have been ideal since they improve the code quality, make codebase maintenance easier, and improves development speed. I would use React Testing Library for this case.
