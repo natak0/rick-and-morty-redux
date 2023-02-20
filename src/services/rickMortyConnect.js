@@ -26,7 +26,6 @@ export const rickMortyApi = createApi({
                 name
                 image
                 gender
-                species
               }
             }
           }

@@ -2,9 +2,7 @@ import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
 const DonutChart = (appdata) => {
-  const genders = ["Female", "Male", "Genderless", "unknown"]; // graphql api spec for gender
   const wrapper = useRef(null);
-
   const width = 400;
   const height = 400;
   const margin = 10;
@@ -14,6 +12,7 @@ const DonutChart = (appdata) => {
   }, [appdata.data]);
 
   useEffect(() => {
+    const genders = ["Female", "Male", "Genderless", "unknown"]; // graphql api spec for gender
     const totalPerGender = [];
     genders.forEach((gender) => {
       const count = appdata.data.filter((d) => d.gender === gender).length;
@@ -33,9 +32,7 @@ const DonutChart = (appdata) => {
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
     const radius = Math.min(width, height) / 2 - margin;
-
     const color = d3.scaleOrdinal(d3.schemeCategory10);
-
     const pie = d3.pie().value((d) => d.value);
     const data = pie(totalPerGender);
 
@@ -74,7 +71,7 @@ const DonutChart = (appdata) => {
           textAlign: "center",
         }}
       >
-        Genders per page view
+        Genders Per Page View
       </h3>
     </div>
   );

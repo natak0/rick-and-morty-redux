@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { Character } from "../../components/Character/Character";
 import { useGetCharacterByIdQuery } from "../../services/rickMortyConnect";
 
-const ListItem = ({ match }) => {
+const ListItem = () => {
   const { id } = useParams();
   const { data, error, isLoading } = useGetCharacterByIdQuery({
     characterId: id,

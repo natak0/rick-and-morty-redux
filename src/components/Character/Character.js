@@ -8,10 +8,10 @@ export const Character = ({ item, excerpt }) => {
       <img src={item.image} alt={`${item.name}`} />
       <div className="item-detail__text-container">
         <h2>{item.name}</h2>
-        <span>{`Gender: ${item.gender}`}</span>
-        <span>{`Species: ${item.species}`}</span>
         {!excerpt && (
           <>
+            <span>{`Gender: ${item.gender}`}</span>
+            <span>{`Species: ${item.species}`}</span>
             <span>{`Origin: ${item.origin.name}`}</span>
             <span>{`Location: ${item.location.name}`}</span>
             <span>{`Status: ${item.status}`}</span>

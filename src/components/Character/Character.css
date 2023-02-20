@@ -6,13 +6,15 @@
 .item-detail img {
   object-fit: scale-down;
   width: 100%;
+  border: 2px solid;
 }
 .item-detail h2 {
   font-size: 1.2rem;
 }
 .item-detail--single {
   flex-direction: row;
-  gap: 2em;
+  gap: 2rem;
+  padding: 2rem;
 }
 .item-detail__text-container {
   display: flex;

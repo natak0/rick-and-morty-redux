@@ -1,10 +1,9 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "../Search/Search";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const random = Math.floor(Math.random() * 826);
+  const random = Math.floor(Math.random() * 826); // the total character count
   return (
     <nav className="navbar">
       <section>
@@ -13,7 +12,7 @@ const Navbar = () => {
             src={`https://rickandmortyapi.com/api/character/avatar/${
               random === 0 ? 1 : random
             }.jpeg`}
-            alt="rick and morty avatar"
+            alt="Rick and Morty avatar"
           />
         </Link>
         <Link to="/">
