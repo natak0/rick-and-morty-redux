@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Character } from "../../components/Character/Character";
 import { useGetCharactersByPageQuery } from "../../services/rickMortyConnect";
 import Pagination from "../../components/Pagination/Pagination";
@@ -9,7 +9,7 @@ import "./ListPage.css";
 
 const ListPage = () => {
   const searchValue = useSelector((state) => state.search.query);
-  const [page, setPage] = useState(1);
+  const page = useSelector((state) => state.setpage.page);
   const { data, error, isLoading } = useGetCharactersByPageQuery({
     page,
     name: searchValue,
@@ -33,11 +33,7 @@ const ListPage = () => {
               {`Total: ${data.characters.info.count}`}
             </p>
           )}
-          <Pagination
-            pageInfo={data.characters.info}
-            page={page}
-            setPage={setPage}
-          />
+          <Pagination pageInfo={data.characters.info} />
         </div>
         <div className="list-wrapper"> {renderList()}</div>
       </section>

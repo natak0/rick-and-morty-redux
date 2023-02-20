@@ -1,16 +1,21 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setpage } from "../../slices/page";
 import "./Pagination.css";
 
-const Pagination = ({ pageInfo, page, setPage }) => {
+const Pagination = ({ pageInfo }) => {
+  const page = useSelector((state) => state.setpage.page);
+  const dispatch = useDispatch();
+
   const setPreviousPage = () => {
     if (pageInfo && pageInfo.prev) {
-      setPage(pageInfo.prev);
+      dispatch(setpage(page > 1 && page - 1));
     }
   };
 
   const setNextPage = () => {
     if (pageInfo && pageInfo.next) {
-      setPage(pageInfo.next);
+      dispatch(setpage(page < pageInfo.pages && page + 1));
     }
   };
   return pageInfo.pages === null ? (

@@ -6,12 +6,14 @@ import App from "./App";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { rickMortyApi } from "./services/rickMortyConnect";
 import { searchSlice } from "./slices/search";
+import { pageSlice } from "./slices/page";
 import "./index.css";
 
 const store = configureStore({
   reducer: {
     [rickMortyApi.reducerPath]: rickMortyApi.reducer,
     search: searchSlice.reducer,
+    setpage: pageSlice.reducer,
   },
   // Adding the api middleware to enable caching
   middleware: (getDefaultMiddleware) =>
