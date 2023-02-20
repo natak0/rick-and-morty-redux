@@ -24,8 +24,6 @@ A Prettier plugin for VScode was used to format the code.
 
 To run the project in the development mode, run [`npm install`] and then [`npm start`] in the terminal within the project folder.
 
-To build the app for production to the `build` folder, run [`npm run build`]
-
 # Styling
 
 I used CSS to style the page. For the naming, I follow _BEM_ (Blocks, Elements and Modifiers) methodology. I also added the styles for mobile view. 
