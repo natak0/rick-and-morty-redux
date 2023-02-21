@@ -16,6 +16,8 @@ export const Character = ({ item, excerpt }) => {
             <span>{`Location: ${item.location.name}`}</span>
             <span>{`Status: ${item.status}`}</span>
             {item.type && <span>{`Type: ${item.type}`}</span>}
+            <br></br>
+            <Link to={"/"}>Back</Link>
           </>
         )}
       </div>
