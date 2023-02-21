@@ -16,7 +16,7 @@ The character view displays the character's image, name, and other details.
 
 ## Tools and environment
 
-The project was created in CRA using plain JavaScript and CSS. I in Visual Studio Code.
+The project was created in CRA using plain JavaScript and CSS in Visual Studio Code using node v16.15.0 (npm v8.5.5).
 
 A Prettier plugin for VScode was used to format the code.
 

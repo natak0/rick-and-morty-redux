@@ -10,6 +10,7 @@ body {
   align-items: center;
   margin: auto;
   height: 100vh;
+  overflow-x: hidden;
 }
 a {
   text-decoration: none;
