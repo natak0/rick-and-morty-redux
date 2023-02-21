@@ -20,6 +20,12 @@
   display: flex;
   flex-direction: column;
 }
+.item-detail a {
+  padding: 16px auto;
+}
+.item-detail a:hover {
+  color: #007bff;
+}
 @media (width <= 30em) {
   .item-detail--single {
     flex-direction: column;
