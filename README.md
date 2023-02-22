@@ -2,6 +2,8 @@
 
 A web application to render a list of characters from the [Rick and Morty API](https://rickandmortyapi.com/documentation/).
 
+The application is running at [https://natak0.github.io/rick-and-morty-redux/](https://natak0.github.io/rick-and-morty-redux/)
+
 The application consists of 2 views. A list of characters and a detailed page for the selected character.
 
 The list of characters has pagination and a search input to search characters by name. It also has a simple donut chart for genders made with D3.js. I used a donut chart because I think this type of chart is perfect to represent limited amount of categories (maximum 4 for this dataset). The chart renders the data for the current page only. It updates every time the page is changed or the data is filtered by name.
